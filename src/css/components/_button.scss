@@ -26,6 +26,12 @@ $darken: 12%;
         @include type-setting(0);
     }
 
+    @include min-screen($xlarge) {
+        padding: $base-line-height ($gutter-width * 2);
+
+        @include type-setting(2);
+    }
+
     @include on-event {
         text-decoration: none;
     }
@@ -50,11 +56,11 @@ $darken: 12%;
     }
 
     &--primary {
-        background-color: $brand-blue;
+        background-color: darken($medium-gray, 12%);
         color: $white;
 
         @include on-event {
-            background-color: darken($brand-blue, $darken);
+            background-color: darken($medium-gray, 22%);
             color: $white;
         }
     }

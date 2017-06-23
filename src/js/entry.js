@@ -1,10 +1,15 @@
 // Vendor
+import TweenMax from 'gsap/TweenMax';
 import picturefill from 'picturefill';
 import svg4everybody from 'svg4everybody';
 
 // This file contains all the dirty hacks and specificity fixes to make them
 // more transparent, quantifiable and isolated;
 import Shame from './common/shame';
+
+// Components
+import { GenderReveal } from './components/gender-reveal';
+
 
 // HTML document has been completely loaded and parsed
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,5 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Dedicated to housing the nasty, hacky, quick-fix code ;)s
     Shame();
+
+    GenderReveal();
 
 });

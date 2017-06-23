@@ -1,0 +1,97 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the gender-reveal component.
+// -----------------------------------------------------------------------------
+
+body {
+    overflow: hidden;
+}
+
+.gender-reveal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    header {
+        width: 100%;
+        height: 20vh;
+    }
+
+    main {
+        width: 100%;
+        height: 60vh;
+    }
+
+    footer {
+        width: 100%;
+        height: 20vh;
+    }
+
+    #reveal-it {
+    
+    }
+
+    .heading {
+        @extend .hidden;
+
+        margin: 4rem 0 0;
+        font-family: 'Sansita', sans-serif;
+        font-weight: 900;
+        font-size: 10vw;
+        color: lighten($medium-gray, 18%);
+
+        @include min-screen($medium) {
+            font-size: 8vw;
+        }
+
+        @include min-screen($xlarge) {
+            font-size: 6vw;
+        }
+
+        &--boy {
+            color: #8ed6e8;
+        }
+
+        &--girl {
+            color: #ff9e9d;
+        }
+    }
+}
+
+.reveal {
+    top: 50%;
+    left: 50%;
+    position: relative;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 220px;
+
+    &__gender {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        &--boy {
+            color: #8ed6e8;
+            width: 268px;
+            top: 39%;
+            left: 61%;
+        }
+
+        &--girl {
+            color: #ff9e9d;
+            width: 326px;
+            top: 74%;
+            left: 74%;
+        }
+
+        .svg-container {
+            @include svg-responsive (100px, 100px, 100%);
+        }
+
+        svg {
+            @extend .hidden;
+        }
+    }
+}

@@ -1,4 +1,4 @@
-# Installation instructions - Projectname #
+# Installation instructions - GreenSock experiments #
 
 ## <a name="toc" href="#toc">Table of contents</a>
 
@@ -8,7 +8,7 @@
 ---
 ## <a name="front-end" href="#front-end">Front-end installation</a>
 
-Tasks that are needed to get the development enviroment running for front-end.
+Tasks that are needed to get the development environment running for front-end.
 
 ### <a name="front-end-npm" href="#front-end-npm">Npm</a>
 
@@ -51,4 +51,4 @@ your system.
 
 ## Credits ##
 
-- Martijn de Valk - [martijn.de.valk@valtech.nl](martijn.de.valk@valtech.nl)
+- Martijn de Valk - [martijndevalk@outlook.com](martijndevalk@outlook.com)
