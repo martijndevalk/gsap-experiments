@@ -1,0 +1,29 @@
+// -----------------------------------------------------------------------------
+// This file contains CSS helper classes.
+// -----------------------------------------------------------------------------
+
+// Main content containers
+.container {
+    max-width: $max-width;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $gutter-width;
+    padding-right: $gutter-width;
+    width: 100%;
+    transition: padding 300ms ease;
+
+    @include min-screen($xlarge) {
+        padding-left: $gutter-width * 3;
+        padding-right: $gutter-width * 3;
+    }
+}
+
+// Responsive "Inline" SVG!
+.svg-container svg {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

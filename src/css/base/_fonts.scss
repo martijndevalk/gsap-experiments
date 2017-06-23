@@ -1,0 +1,51 @@
+// -----------------------------------------------------------------------------
+// This file contains all @font-face declarations.
+// -----------------------------------------------------------------------------
+
+// Thin
+@font-face {
+    font-family: 'Sentico Sans';
+    src: url('../fonts/2527EE_0_0.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
+// Light
+@font-face {
+    font-family: 'Sentico Sans';
+    src: url('../fonts/2527EE_5_0.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+// Regular
+@font-face {
+    font-family: 'Sentico Sans';
+    src: url('../fonts/2527EE_3_0.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+// Medium Bold
+@font-face {
+    font-family: 'Sentico Sans';
+    src: url('../fonts/2527EE_2_0.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+// Bold
+@font-face {
+    font-family: 'Sentico Sans';
+    src: url('../fonts/2527EE_A_0.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+// Extra bold
+@font-face {
+    font-family: 'Sentico Sans';
+    src: url('../fonts/2527EE_9_0.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
