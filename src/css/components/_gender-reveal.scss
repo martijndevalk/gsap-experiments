@@ -2,8 +2,20 @@
 // This file contains all styles related to the gender-reveal component.
 // -----------------------------------------------------------------------------
 
+$boy:  #8ed6e8;
+$girl: #ff9e9d;
+
 body {
     overflow: hidden;
+    transition: background 1000ms ease;
+
+    &.gender-is-active {
+        background-color: $boy;
+    }
+}
+
+#confetti {
+    @extend .hidden;
 }
 
 .gender-reveal {
@@ -12,29 +24,49 @@ body {
     justify-content: center;
     text-align: center;
 
-    header {
-        width: 100%;
-        height: 20vh;
-    }
-
     main {
+        margin: auto;
         width: 100%;
-        height: 60vh;
-    }
-
-    footer {
-        width: 100%;
-        height: 20vh;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 99;
     }
 
     #reveal-it {
-    
+        @extend .hidden;
+
+        padding: ($base-line-height / 1.5) ($gutter-width * 2);
+        font-weight: 400;
+        display: inline-flex;
+        align-items: center;
+        border-radius: 30px;
+        white-space: nowrap;
+        cursor: pointer;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: all 400ms ease-out;
+        vertical-align: middle;
+        background-color: $white;
+        border: 2px solid $link-water;
+        color: darken($link-water, 30%);
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 9999;
+
+        @include type-setting(2);
+
+        @include on-event {
+            background-color: $link-water;
+        }
     }
 
     .heading {
         @extend .hidden;
 
-        margin: 4rem 0 0;
+        margin: 0;
         font-family: 'Sansita', sans-serif;
         font-weight: 900;
         font-size: 10vw;
@@ -49,11 +81,11 @@ body {
         }
 
         &--boy {
-            color: #8ed6e8;
+            color: $boy;
         }
 
         &--girl {
-            color: #ff9e9d;
+            color: $girl;
         }
     }
 }
@@ -71,16 +103,15 @@ body {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        color: $white;
 
         &--boy {
-            color: #8ed6e8;
             width: 268px;
             top: 39%;
             left: 61%;
         }
 
         &--girl {
-            color: #ff9e9d;
             width: 326px;
             top: 74%;
             left: 74%;

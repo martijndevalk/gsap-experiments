@@ -1,4 +1,11 @@
 // Vendor
+import $ from 'jquery';
+import jQuery from 'jquery';
+
+// export for others scripts to use
+window.$ = $;
+window.jQuery = jQuery;
+
 import TweenMax from 'gsap/TweenMax';
 import picturefill from 'picturefill';
 import svg4everybody from 'svg4everybody';

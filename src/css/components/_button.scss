@@ -43,24 +43,17 @@ $darken: 12%;
         @include type-setting(-1);
     }
 
-    // Large size button
-    &--large {
-        padding: ($base-line-height / 2.2) ($gutter-width * 1.2);
-
-        @include type-setting(1);
-    }
-
     // Button filled with color
     &--default {
         color: $white;
     }
 
     &--primary {
-        background-color: darken($medium-gray, 12%);
+        background-color: $brand-blue;
         color: $white;
 
         @include on-event {
-            background-color: darken($medium-gray, 22%);
+            background-color: darken($brand-blue, $darken);
             color: $white;
         }
     }

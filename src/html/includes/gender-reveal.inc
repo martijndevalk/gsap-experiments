@@ -1,9 +1,9 @@
 <div class="gender-reveal">
-    <header>
-        <h1 class="heading"><span class="heading--boy">Boy</span> <span class="heading--text">Or</span> <span class="heading--girl">Girl</span><span class="heading--text">?</span></h1>
-    </header>
 
     <main>
+        <h1 class="heading"><span class="heading--boy">Boy</span> <span class="heading--text">Or</span> <span class="heading--girl">Girl</span><span class="heading--text">?</span></h1>
+        <button id="reveal-it" type="button" name="button">Reveal gender</button>
+
         <div class="reveal">
             <div class="reveal__gender reveal__gender--boy">
                 <div class="svg-container">
@@ -30,13 +30,11 @@
                         C55.1,64.6,67.5,50.6,67.5,33.8z M10.5,33.8c0-12.9,10.5-23.3,23.3-23.3c12.9,0,23.3,10.5,23.3,23.3c0,12.9-10.5,23.3-23.3,23.3
                         S10.5,46.6,10.5,33.8z"/>
                     </svg>
-
                 </div>
             </div>
         </div>
     </main>
 
-    <footer>
-        <button id="reveal-it" type="button" name="button" class="button button--primary">Reveal gender</button>
-    </footer>
 </div>
+
+<canvas id="confetti"></canvas>
