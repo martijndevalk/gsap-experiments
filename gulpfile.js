@@ -243,5 +243,6 @@ gulp.task('build', function(callback) {
         ['copy-font-files', 'copy-favicon-folder', 'copy-svg-files'],
         ['build-img', 'build-svg'],
         ['build-js', 'build-styles'],
+        ['build-content', 'build-include'],
     callback);
 });

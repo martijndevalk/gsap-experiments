@@ -59,9 +59,9 @@ export const GenderReveal = () => {
                 .add('removeElms')
                 .to(mainTitle, 1, {y: -50, autoAlpha: 0, ease: Power4.easeOut})
                 .to(btnReveal, 1, {autoAlpha: 0, ease: Power4.easeOut}, 'removeElms-=0.5')
-                .to(boyGender, 2.5, {scale: 1, rotation: 720, autoAlpha: 1, transformOrigin: '110px 158px'})
+                // .to(boyGender, 2.5, {scale: 1, rotation: 720, autoAlpha: 1, transformOrigin: '110px 158px'})
+                .to(girlGender, 2.5, {scale: 1, rotation: 720, autoAlpha: 1, transformOrigin: '110px 110px'})
                 .to(confet, 1, {autoAlpha: 1}, '-=0.5')
-                // .to(girlGender, 2.5, {scale: 1, rotation: 720, autoAlpha: 1, transformOrigin: '110px 110px'})
                 ;
 
     		return revealTL;
