@@ -3,8 +3,11 @@
 // -----------------------------------------------------------------------------
 
 .like {
+    margin: 0 auto;
+    width: 400px;
+
     &__heart {
-        width: 400px;
+        width: 220px;
 
         .svg-container {
             @include svg-responsive (400px, 400px, 100%);
@@ -16,6 +19,12 @@
 
         #heart {
             cursor: pointer;
+            color: #e64c3c;
+            transition: color 300ms ease-out;
+
+            @include on-event {
+                color: darken(#e64c3c, 10%);
+            }
         }
     }
 }
