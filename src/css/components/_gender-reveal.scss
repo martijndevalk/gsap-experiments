@@ -10,7 +10,7 @@ body {
     transition: background 1000ms ease;
 
     &.gender-is-active {
-        background-color: $boy;
+        background-color: $girl;
     }
 }
 
