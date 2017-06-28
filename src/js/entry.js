@@ -1,12 +1,6 @@
-// Vendor
-import $ from 'jquery';
-import jQuery from 'jquery';
+import TweenMax from 'gsap';
+import drawSVG from './vendor/gsap/DrawSVGPlugin';
 
-// export for others scripts to use
-window.$ = $;
-window.jQuery = jQuery;
-
-import TweenMax from 'gsap/TweenMax';
 import picturefill from 'picturefill';
 import svg4everybody from 'svg4everybody';
 
@@ -16,6 +10,7 @@ import Shame from './common/shame';
 
 // Components
 import { GenderReveal } from './components/gender-reveal';
+import { PhotoLike } from './components/photo-like';
 
 
 // HTML document has been completely loaded and parsed
@@ -27,5 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     Shame();
 
     GenderReveal();
+    PhotoLike();
 
 });

@@ -216,11 +216,11 @@ gulp.task('run-server', function() {
         port: 8080
     });
 
-    gulp.watch('./src/js/**/*.js', ['build-js']);
-    gulp.watch('./src/css/**/*.scss', ['build-styles']);
-    gulp.watch('./src/**/*.html', ['build-content']);
-    gulp.watch('./src/**/*.inc', ['build-include']);
-    gulp.watch('src/img/**/*.+(png|gif|jpg|svg)', ['build-img', 'build-svg', 'copy-svg-files']);
+    gulp.watch('src/js/**/*.js', {cwd: './'}, ['build-js']);
+    gulp.watch('src/css/**/*.scss', {cwd: './'}, ['build-styles']);
+    gulp.watch('src/**/*.html', {cwd: './'}, ['build-content']);
+    gulp.watch('src/**/*.inc', {cwd: './'}, ['build-include']);
+    gulp.watch('src/img/**/*.+(png|gif|jpg|svg)', {cwd: '/'}, ['build-img', 'build-svg', 'copy-svg-files']);
 
     gulp.watch("./dist/*.html").on('change', browserSync.reload);
 });
@@ -243,5 +243,6 @@ gulp.task('build', function(callback) {
         ['copy-font-files', 'copy-favicon-folder', 'copy-svg-files'],
         ['build-img', 'build-svg'],
         ['build-js', 'build-styles'],
+        ['build-content', 'build-include'],
     callback);
 });

@@ -1,0 +1,21 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the photo-like component.
+// -----------------------------------------------------------------------------
+
+.like {
+    &__heart {
+        width: 400px;
+
+        .svg-container {
+            @include svg-responsive (400px, 400px, 100%);
+        }
+
+        #grouped-lines line {
+            @extend .hidden;
+        }
+
+        #heart {
+            cursor: pointer;
+        }
+    }
+}
