@@ -2,6 +2,10 @@
 // This file contains all styles related to the photo-like component.
 // -----------------------------------------------------------------------------
 
+body {
+    background-color: $light-gray;
+}
+
 .like {
     margin: 0 auto;
     width: 400px;
@@ -25,12 +29,12 @@
 
         #heart {
             cursor: pointer;
-            color: $light-gray;
+            color: #e64c3c;
             transition: color 300ms ease-out;
 
-            @include on-event {
-                color: darken($light-gray, 10%);
-            }
+            // @include on-event {
+            //     color: darken(#e64c3c, 10%);
+            // }
 
             &.is-active {
                 color: #e64c3c;
