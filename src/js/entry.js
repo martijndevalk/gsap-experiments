@@ -2,6 +2,7 @@ import PIXI from 'pixi.js';
 import TweenMax from 'gsap';
 import drawSVG from './vendor/gsap/DrawSVGPlugin';
 import PixiPlugin from './vendor/gsap/PixiPlugin';
+import MorphSVG from './vendor/gsap/MorphSVGPlugin';
 
 import duotone from './components/duotone';
 import picturefill from 'picturefill';
@@ -14,6 +15,7 @@ import Shame from './common/shame';
 import { GenderReveal } from './components/gender-reveal';
 import { PhotoLike } from './components/photo-like';
 import { PhotoFilters } from './components/photo-filters';
+import { Organic } from './components/organic';
 
 
 // HTML document has been completely loaded and parsed
@@ -29,4 +31,5 @@ document.addEventListener('DOMContentLoaded', () => {
     PhotoLike();
     PhotoFilters();
     duotone();
+    Organic();
 });

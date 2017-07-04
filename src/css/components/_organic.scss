@@ -1,0 +1,17 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the photo-like component.
+// -----------------------------------------------------------------------------
+
+:root {
+
+}
+
+.organic {
+    margin: 0 auto;
+    width: 500px;
+
+    .svg-container {
+        @include svg-responsive (800px, 600px, 100%);
+    }
+
+}
