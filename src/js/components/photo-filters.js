@@ -98,6 +98,25 @@ export const PhotoFilters = () => {
         return photoTl;
     }
 
+    function convertToDueTone(color1, color2) {
+
+      let value = [];
+
+        value = value.concat(
+        [color1[0]/256 - color2[0]/256, 0, 0, 0, color2[0]/256]);
+
+        value = value.concat(
+        [color1[1]/256 - color2[1]/256, 0, 0, 0, color2[1]/256]);
+
+        value = value.concat(
+        [color1[2]/256 - color2[2]/256, 0, 0, 0, color2[2]/256]);
+
+        value = value.concat([0, 0, 0, 1, 0]);
+
+        return value.join(', ');
+
+    }
+
     function init() {
 
         const componentExist = document.body.contains(stage);
@@ -114,7 +133,7 @@ export const PhotoFilters = () => {
                     contrast: 0.8,
                     colorize: 'red',
                     combineCMF: true
-                 }
+                }
             });
 
             TweenMax.to(photoContainer3, 1, {
@@ -122,24 +141,24 @@ export const PhotoFilters = () => {
                     contrast: 1.2,
                     brightness: 1.2,
                     combineCMF: true
-                 }
+                }
             });
 
             TweenMax.to(photoContainer4, 1, {
                 pixi: {
-                    brightness: 2.5,
-                    colorize: 'hsl(200, 100%, 22%)',
-                    combineCMF: true
-                 }
+                    blur: 5
+                }
             });
 
+            let convertedColors = convertToDueTone([240, 14, 46], [25, 37, 80]);
+            console.log('Matrix value', convertedColors);
 
-            let duotone = new PIXI.filters.ColorMatrixFilter();
-            duotone._loadMatrix([0.83984375, 0, 0, 0, 0.09765625, -0.08984375, 0, 0, 0, 0.14453125, -0.1328125, 0, 0, 0, 0.3125, 0, 0, 0, 1, 0], false);
+            let duotoneFilter = new PIXI.filters.ColorMatrixFilter();
+            duotoneFilter._loadMatrix([0.83984375, 0, 0, 0, 0.09765625, -0.08984375, 0, 0, 0, 0.14453125, -0.1328125, 0, 0, 0, 0.3125, 0, 0, 0, 1, 0], false);
 
             TweenMax.to(photoContainer5, 1, {
                 pixi: {
-                    colorMatrixFilter: duotone
+                    colorMatrixFilter: duotoneFilter
                 }
             });
         }
