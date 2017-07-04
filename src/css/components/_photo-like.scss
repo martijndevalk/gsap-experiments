@@ -2,22 +2,24 @@
 // This file contains all styles related to the photo-like component.
 // -----------------------------------------------------------------------------
 
-body {
-    background-color: $light-gray;
+:root {
+    --bgColor: lighten($beauty-bush, 10%);
+    --HeartColor: $beauty-bush;
+    --HeartScale: 1;
 }
 
 .like {
-    margin: 0 auto;
-    width: 400px;
-
-    &__photo {
-        img {
-            width: 100%;
-        }
-    }
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bgColor);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    transform: scale(var(--HeartScale));
 
     &__heart {
-        width: 220px;
+        margin: auto;
+        width: 300px;
 
         .svg-container {
             @include svg-responsive (400px, 400px, 100%);
@@ -29,7 +31,7 @@ body {
 
         #heart {
             cursor: pointer;
-            color: #e64c3c;
+            color: $mojo;
             transition: color 300ms ease-out;
 
             // @include on-event {
@@ -37,7 +39,7 @@ body {
             // }
 
             &.is-active {
-                color: #e64c3c;
+                color: $mojo;
             }
         }
     }

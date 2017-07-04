@@ -1,7 +1,6 @@
 export const PhotoLike = () => {
 
-
-    const select = function(s) {
+    let select = function(s) {
             return document.querySelector(s);
         },
         selectAll = function(s) {
@@ -19,7 +18,9 @@ export const PhotoLike = () => {
         gSparksMoveCircle = selectAll('#grouped-sparks-move circle'),
         sparksGrowColors = ['#f2385a','#f5a503','#ff7bac','#36b1bf','#7ac943','#f2385a','#f5a503', '#4ad9d9'],
         sparksMoveColors = ['#f5a503','#7ac943','#f5a503','#ff7bac','#4ad9d9','#7ac943','#36b1bf', '#36b1bf'],
-        mainTl = new TimelineMax();
+        mainTl = new TimelineMax({
+            paused: true
+        });
 
     function getHeartTl() {
         const heartTl = new TimelineMax();
@@ -28,8 +29,7 @@ export const PhotoLike = () => {
 
         heartTl
         .set(gLines, {
-            drawSVG: '30% 30%',
-            autoAlpha: 0
+            drawSVG: '30% 30%'
         })
         .set([gSparksGrow, gSparksMove], {
             alpha: 0,
@@ -54,7 +54,6 @@ export const PhotoLike = () => {
             transformOrigin: 'center center',
         }, {
             scale: 0.8,
-            transformOrigin: 'center center',
             ease:Elastic.easeOut.config(0.2, 0.8)
         })
         .to(heart, 1.0, {
@@ -109,7 +108,9 @@ export const PhotoLike = () => {
         .to(heartContainer, 1.4, {
             rotationY: 180,
             ease:Back.easeOut
-        }, '-=1.0');
+        }, '-=1.0')
+        .to(stage, 2, {'--bgColor': '#eab5b3'},'-=0.5')
+        .to(stage, 2, {'--HeartScale': 2},'-=0.5')
 
         return heartTl;
     }
@@ -120,10 +121,11 @@ export const PhotoLike = () => {
 
         if (componentExist == true) {
 
-            mainTl.add(getHeartTl(), 'play-heart');
+            mainTl
+                .add(getHeartTl(), 'play-heart');
 
             heart.addEventListener('click', function () {
-                mainTl.seek('play-heart');
+                mainTl.seek('play-heart').play();
                 this.classList.add('is-active');
             });
         }

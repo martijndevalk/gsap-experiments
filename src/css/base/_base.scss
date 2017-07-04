@@ -17,6 +17,19 @@ a {
     @include on-event {
         text-decoration: underline;
     }
+
+    &[rel~="external"] {
+        color: $brand-blue;
+
+        .icon-external-link {
+            display: inline-block;
+            width: 11px;
+
+            .svg-container {
+                @include svg-responsive (24px, 24px, 100%);
+            }
+        }
+    }
 }
 
 // iFrame

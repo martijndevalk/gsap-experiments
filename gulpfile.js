@@ -25,7 +25,7 @@ var gulp             = require('gulp'),
     svgstore         = require('gulp-svgstore'),
     svgmin           = require('gulp-svgmin'),
     gutil            = require('gulp-util'),
-    size             = require('gulp-size'),
+    sizereport       = require('gulp-sizereport'),
     path             = require('path');
 
 var development = environments.development;
@@ -73,13 +73,9 @@ gulp.task('build-js', function() {
     .pipe(rename('bundle.js'))
     .pipe(production(stripDebug()))
     .pipe(production(uglify()))
-    .pipe(production(size({
-        title: '[JAVASCRIPT FILE SIZE]',
-        pretty: true,
-        showFiles: true,
-        showTotal: false,
+    .pipe(sizereport({
         gzip: true
-    })))
+    }))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./dist/js'))
     .pipe(browserSync.stream());
@@ -98,13 +94,9 @@ gulp.task('build-styles', function () {
         browsers: ['ie >= 9', 'iOS >= 7', 'Firefox > 20', 'Safari >= 8'],
     })]))
     .pipe(production(cleanCSS()))
-    .pipe(production(size({
-        title: '[CSS FILE SIZE]',
-        pretty: true,
-        showFiles: true,
-        showTotal: false,
+    .pipe(sizereport({
         gzip: true
-    })))
+    }))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./dist/'))
     .pipe(browserSync.stream());
@@ -220,7 +212,7 @@ gulp.task('run-server', function() {
     gulp.watch('src/css/**/*.scss', {cwd: './'}, ['build-styles']);
     gulp.watch('src/**/*.html', {cwd: './'}, ['build-content']);
     gulp.watch('src/**/*.inc', {cwd: './'}, ['build-include']);
-    gulp.watch('src/img/**/*.+(png|gif|jpg|svg)', {cwd: '/'}, ['build-img', 'build-svg', 'copy-svg-files']);
+    gulp.watch('src/img/**/*.+(png|gif|jpg|svg)', {cwd: './'}, ['build-img', 'build-svg', 'copy-svg-files']);
 
     gulp.watch("./dist/*.html").on('change', browserSync.reload);
 });
