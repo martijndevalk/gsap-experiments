@@ -1,13 +1,13 @@
 /*!
- * VERSION: 0.8.5
- * DATE: 2016-05-24
+ * VERSION: 0.8.11
+ * DATE: 2017-04-29
  * UPDATES AND DOCS AT: http://greensock.com
  *
- * @license Copyright (c) 2008-2016, GreenSock. All rights reserved.
+ * @license Copyright (c) 2008-2017, GreenSock. All rights reserved.
  * MorphSVGPlugin is a Club GreenSock membership benefit; You must have a valid membership to use
  * this code without violating the terms of use. Visit http://greensock.com/club/ to sign up or get more details.
  * This work is subject to the software agreement that was issued with your membership.
- *
+ * 
  * @author: Jack Doyle, jack@greensock.com
  */
 var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(global) !== "undefined") ? global : this || window; //helps ensure compatibility with AMD/RequireJS and CommonJS/Node
@@ -20,13 +20,17 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 		_RAD2DEG = 180 / Math.PI,
 		_svgPathExp = /[achlmqstvz]|(-?\d*\.?\d*(?:e[\-+]?\d+)?)[0-9]/ig,
 		_numbersExp = /(?:(-|-=|\+=)?\d*\.?\d*(?:e[\-+]?\d+)?)[0-9]/ig,
+		_selectorExp = /(^[#\.]|[a-y][a-z])/gi,
 		_commands = /[achlmqstvz]/ig,
 		_scientific = /[\+\-]?\d*\.?\d+e[\+\-]?\d+/ig,
+		//_attrExp = /(\S+)=["']?((?:.(?!["']?\s+(?:\S+)=|[>"']))+.)["']?/gi, //finds all the attribute name/value pairs in an HTML element
+		//_outerTagExp = /^<([A-Za-z0-9_\-]+)((?:\s+[A-Za-z0-9_\-]+(?:\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)>/i, //takes the outerHTML and pulls out [0] - the first tag, [1] - the tag name, and [2] - the attribute name/value pairs (space-delimited)
+		//_wrappingQuotesExp = /^["']|["']$/g,
 		TweenLite = _gsScope._gsDefine.globals.TweenLite,
 		//_nonNumbersExp = /(?:([\-+](?!(\d|=)))|[^\d\-+=e]|(e(?![\-+][\d])))+/ig,
 
 		_log = function(message) {
-			if (window.console) {
+			if (_gsScope.console) {
 				console.log(message);
 			}
 		},
@@ -314,8 +318,10 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 				// "A" (arc)
 				} else if (command === "A") {
 					beziers = _arcToBeziers(relativeX, relativeY, a[i+1]*1, a[i+2]*1, a[i+3]*1, a[i+4]*1, a[i+5]*1, (isRelative ? relativeX : 0) + a[i+6]*1, (isRelative ? relativeY : 0) + a[i+7]*1);
-					for (j = 0; j < beziers.length; j++) {
-						segment[l++] = beziers[j];
+					if (beziers) {
+						for (j = 0; j < beziers.length; j++) {
+							segment[l++] = beziers[j];
+						}
 					}
 					relativeX = segment[l-2];
 					relativeY = segment[l-1];
@@ -767,13 +773,15 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 			} : _pointsFilter;
 		},
 		_createPath = function(e, ignore) {
-			var path = document.createElementNS("http://www.w3.org/2000/svg", "path"),
+			var path = _gsScope.document.createElementNS("http://www.w3.org/2000/svg", "path"),
 				attr = Array.prototype.slice.call(e.attributes),
-				i = attr.length;
+				i = attr.length,
+				name;
 			ignore = "," + ignore + ",";
 			while (--i > -1) {
-				if (ignore.indexOf("," + attr[i].nodeName + ",") === -1) {
-					path.setAttributeNS(null, attr[i].nodeName, attr[i].nodeValue);
+				name = attr[i].nodeName.toLowerCase(); //in Microsoft Edge, if you don't set the attribute with a lowercase name, it doesn't render correctly! Super weird.
+				if (ignore.indexOf("," + name + ",") === -1) {
+					path.setAttributeNS(null, name, attr[i].nodeValue);
 				}
 			}
 			return path;
@@ -823,7 +831,7 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 				rcirc = r * circ;
 				data = "M" + (x+r) + "," + y + " C" + [x+r, y + rycirc, x + rcirc, y + ry, x, y + ry, x - rcirc, y + ry, x - r, y + rycirc, x - r, y, x - r, y - rycirc, x - rcirc, y - ry, x, y - ry, x + rcirc, y - ry, x + r, y - rycirc, x + r, y].join(",") + "z";
 			} else if (type === "line") {
-				data = "M" + e.getAttribute("x1") + "," + e.getAttribute("y1") + " L" + e.getAttribute("x2") + "," + e.getAttribute("y2");
+				data = "M" + (e.getAttribute("x1") || 0) + "," + (e.getAttribute("y1") || 0) + " L" + (e.getAttribute("x2") || 0) + "," + (e.getAttribute("y2") || 0);
 			} else if (type === "polyline" || type === "polygon") {
 				points = (e.getAttribute("points") + "").match(_numbersExp) || [];
 				x = points.shift();
@@ -844,7 +852,7 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 		_parseShape = function(shape, forcePath, target) {
 			var isString = typeof(shape) === "string",
 				e, type;
-			if (!isString || (shape.match(_numbersExp) || []).length < 3) {
+			if (!isString || _selectorExp.test(shape) || (shape.match(_numbersExp) || []).length < 3) {
 				e = isString ? TweenLite.selector(shape) : (shape && shape[0]) ? shape : [shape]; //allow array-like objects like jQuery objects.
 				if (e && e[0]) {
 					e = e[0];
@@ -872,13 +880,16 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 			propName: "morphSVG",
 			API: 2,
 			global: true,
-			version: "0.8.5",
+			version: "0.8.11",
 
 			//called when the tween renders for the first time. This is where initial values should be recorded and any setup routines should run.
-			init: function(target, value, tween) {
+			init: function(target, value, tween, index) {
 				var type, p, pt, shape, isPoly;
 				if (typeof(target.setAttribute) !== "function") {
 					return false;
+				}
+				if (typeof(value) === "function") {
+					value = value(index, target);
 				}
 				type = target.nodeName.toUpperCase();
 				isPoly = (type === "POLYLINE" || type === "POLYGON");
@@ -974,7 +985,7 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 		}
 		a = [];
 		l = bezier.length;
-		if (matrix) {
+		if (matrix && matrix.join(",") !== "1,0,0,1,0,0") {
 			for (i = 0; i < l; i+=2) {
 				a.push({x:prefix + (bezier[i] * matrix[0] + bezier[i+1] * matrix[2] + offsetX), y:prefix + (bezier[i] * matrix[1] + bezier[i+1] * matrix[3] + offsetY)});
 			}
@@ -995,10 +1006,10 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 	var getGlobal = function() {
 		return (_gsScope.GreenSockGlobals || _gsScope)[name];
 	};
-	if (typeof(define) === "function" && define.amd) { //AMD
-		define(["./TweenLite"], getGlobal);
-	} else if (typeof(module) !== "undefined" && module.exports) { //node
-		require("./TweenLite.js");
+	if (typeof(module) !== "undefined" && module.exports) { //node
+		require("../TweenLite.js");
 		module.exports = getGlobal();
+	} else if (typeof(define) === "function" && define.amd) { //AMD
+		define(["TweenLite"], getGlobal);
 	}
 }("MorphSVGPlugin"));

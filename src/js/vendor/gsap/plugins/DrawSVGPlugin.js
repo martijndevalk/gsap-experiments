@@ -1,6 +1,6 @@
 /*!
- * VERSION: 0.1.2
- * DATE: 2017-01-17
+ * VERSION: 0.1.4
+ * DATE: 2017-06-19
  * UPDATES AND DOCS AT: http://greensock.com
  *
  * @license Copyright (c) 2008-2017, GreenSock. All rights reserved.
@@ -18,11 +18,12 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 	var _doc = _gsScope.document,
 		_getComputedStyle = _doc.defaultView ? _doc.defaultView.getComputedStyle : function() {},
 		_numbersExp = /(?:(-|-=|\+=)?\d*\.?\d*(?:e[\-+]?\d+)?)[0-9]/ig,
+		_isEdge = (((_gsScope.navigator || {}).userAgent || "").indexOf("Edge") !== -1), //Microsoft Edge has a bug that causes it not to redraw the path correctly if the stroke-linecap is anything other than "butt" (like "round") and it doesn't match the stroke-linejoin. A way to trigger it is to change the stroke-miterlimit, so we'll only do that if/when we have to (to maximize performance)
 		DrawSVGPlugin;
 
 	function getDistance(x1, y1, x2, y2, scaleX, scaleY) {
-		x2 = (parseFloat(x2) - parseFloat(x1)) * scaleX;
-		y2 = (parseFloat(y2) - parseFloat(y1)) * scaleY;
+		x2 = (parseFloat(x2 || 0) - parseFloat(x1 || 0)) * scaleX;
+		y2 = (parseFloat(y2 || 0) - parseFloat(y1 || 0)) * scaleY;
 		return Math.sqrt(x2 * x2 + y2 * y2);
 	}
 
@@ -134,7 +135,7 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 	DrawSVGPlugin = _gsScope._gsDefine.plugin({
 		propName: "drawSVG",
 		API: 2,
-		version: "0.1.1",
+		version: "0.1.4",
 		global: true,
 		overwriteProps: ["drawSVG"],
 
@@ -143,7 +144,7 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 				return false;
 			}
 			var length = getLength(target) + 1,
-				start, end, overage;
+				start, end, overage, cs;
 			this._style = target.style;
 			if (typeof(value) === "function") {
 				value = value(index, target);
@@ -168,6 +169,14 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 				this._offset = -start[0];
 				this._addTween(this, "_dash", this._dash, (end[1] - end[0]) || 0.00001, "drawSVG");
 				this._addTween(this, "_offset", this._offset, -end[0], "drawSVG");
+			}
+			if (_isEdge) { //to work around a bug in Microsoft Edge, animate the stroke-miterlimit by 0.0001 just to trigger the repaint (only necessary if stroke-linecap isn't "butt"; also unnecessary if it's "round" and stroke-linejoin is also "round"). Imperceptible, relatively high-performance, and effective. Another option was to set the "d" <path> attribute to its current value on every tick, but that seems like it'd be much less performant.
+				cs = _getComputedStyle(target);
+				end = cs.strokeLinecap;
+				if (end !== "butt" && end !== cs.strokeLinejoin) {
+					end = parseFloat(cs.strokeMiterlimit);
+					this._addTween(target.style, "strokeMiterlimit", end, end + 0.0001, "strokeMiterlimit");
+				}
 			}
 			return true;
 		},
@@ -197,10 +206,10 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 	var getGlobal = function() {
 		return (_gsScope.GreenSockGlobals || _gsScope)[name];
 	};
-	if (typeof(define) === "function" && define.amd) { //AMD
-		define(["./TweenLite"], getGlobal);
-	} else if (typeof(module) !== "undefined" && module.exports) { //node
-		require("./TweenLite.js");
+	if (typeof(module) !== "undefined" && module.exports) { //node
+		require("../TweenLite.js");
 		module.exports = getGlobal();
+	} else if (typeof(define) === "function" && define.amd) { //AMD
+		define(["TweenLite"], getGlobal);
 	}
 }("DrawSVGPlugin"));

@@ -1,22 +1,22 @@
-import PIXI from 'pixi.js';
+// import PIXI from 'pixi.js';
 import TweenMax from 'gsap';
-import drawSVG from './vendor/gsap/DrawSVGPlugin';
-import PixiPlugin from './vendor/gsap/PixiPlugin';
-import MorphSVG from './vendor/gsap/MorphSVGPlugin';
+import drawSVG from './vendor/gsap/plugins/DrawSVGPlugin';
+import PixiPlugin from './vendor/gsap/plugins/PixiPlugin';
+import MorphSVG from './vendor/gsap/plugins/MorphSVGPlugin';
 
 import duotone from './components/duotone';
-import picturefill from 'picturefill';
+// import picturefill from 'picturefill';
 
 // This file contains all the dirty hacks and specificity fixes to make them
 // more transparent, quantifiable and isolated;
 import Shame from './common/shame';
 
 // Components
-import { GenderReveal } from './components/gender-reveal';
-import { PhotoLike } from './components/photo-like';
-import { PhotoFilters } from './components/photo-filters';
-import { Organic } from './components/organic';
-
+// import { GenderReveal } from './components/gender-reveal';
+// import { PhotoLike } from './components/photo-like';
+// import { PhotoFilters } from './components/photo-filters';
+// import { Organic } from './components/organic';
+import { Mask } from './components/mask';
 
 // HTML document has been completely loaded and parsed
 document.addEventListener('DOMContentLoaded', () => {
@@ -27,9 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
     Shame();
 
     // Init
-    GenderReveal();
-    PhotoLike();
-    PhotoFilters();
-    duotone();
-    Organic();
+    // GenderReveal();
+    // PhotoLike();
+    // PhotoFilters();
+    // duotone();
+    // Organic();
+    Mask();
 });

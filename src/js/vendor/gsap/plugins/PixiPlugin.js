@@ -460,7 +460,7 @@ var _gsScope = (typeof module !== "undefined" && module.exports && typeof global
 		return (_gsScope.GreenSockGlobals || _gsScope)[name];
 	};
 	if (typeof(module) !== "undefined" && module.exports) { //node
-		require("./TweenLite.js");
+		require("../TweenLite.js");
 		module.exports = getGlobal();
 	} else if (typeof(define) === "function" && define.amd) { //AMD
 		define(["TweenLite"], getGlobal);
