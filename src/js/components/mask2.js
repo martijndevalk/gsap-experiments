@@ -19,7 +19,7 @@ export const Mask2 = () => {
 
     function getMask2Tl() {
         const mask2Tl = new TimelineMax();
-        // organicTl.timeScale(4);
+        // mask2Tl.timeScale(4);
         CSSPlugin.defaultSmoothOrigin = true;
 
         mask2Tl
