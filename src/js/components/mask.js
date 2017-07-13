@@ -8,8 +8,9 @@ export const Mask = () => {
         },
         body = select('body'),
         stage = select('.mask'),
+        zoom = select('.bg-visual-wrap'),
         ltrGroup = select('.letter-group'),
-        ltrSmask = select('#clipShape1'),
+        ltrSmask = select('.s-mask'),
         ltrS = select('.letter-s'),
         bgVisual = select('.bg-visual'),
 
@@ -24,24 +25,25 @@ export const Mask = () => {
         // organicTl.timeScale(4);
         CSSPlugin.defaultSmoothOrigin = true;
 
-        organicTl
-        .add('scale-text')
-        .to(ltrGroup, 4, {
-            scale: 4,
-            transformOrigin: '50% 50%',
-            ease: Power3.easeOut
-        })
-        .to(ltrSmask, 4, {
-            scale: 4,
-            transformOrigin: '50% 50%',
-            ease: Power3.easeOut
-        }, 'scale-text')
-
-        .set(bgVisual, { autoAlpha: 1 })
-        .to(ltrS, 2, {
-            autoAlpha: 0,
-            ease: Power4.easeOut
-        }, '-=2.5')
+        // organicTl
+        // .add('scale-text')
+        // .set([ltrGroup, ltrSmask], { scale: 0.1 })
+        // .to(ltrGroup, 2.5, {
+        //     scale: 8,
+        //     transformOrigin: '0% 0%',
+        //     ease: Power4.easeOut
+        // })
+        // .to(ltrSmask, 2.5, {
+        //     scale: 8,
+        //     transformOrigin: '0% 0%',
+        //     ease: Power4.easeOut
+        // }, 'scale-text')
+        //
+        // .set(bgVisual, { autoAlpha: 1 })
+        // .to(ltrS, 2, {
+        //     autoAlpha: 0,
+        //     ease: Power4.easeOut
+        // }, '-=1')
 
         return organicTl;
     }

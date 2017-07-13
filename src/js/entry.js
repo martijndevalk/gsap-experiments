@@ -17,6 +17,7 @@ import Shame from './common/shame';
 // import { PhotoFilters } from './components/photo-filters';
 // import { Organic } from './components/organic';
 import { Mask } from './components/mask';
+import { Mask2 } from './components/mask2';
 
 // HTML document has been completely loaded and parsed
 document.addEventListener('DOMContentLoaded', () => {
@@ -33,4 +34,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // duotone();
     // Organic();
     Mask();
+    Mask2();
 });
