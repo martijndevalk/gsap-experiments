@@ -15,8 +15,6 @@ export const Mask2 = () => {
             repeatDelay: 1
         });
 
-        console.log(shape);
-
     function getMask2Tl() {
         const mask2Tl = new TimelineMax();
         // mask2Tl.timeScale(4);

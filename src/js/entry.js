@@ -3,8 +3,11 @@ import TweenMax from 'gsap';
 import drawSVG from './vendor/gsap/plugins/DrawSVGPlugin';
 import PixiPlugin from './vendor/gsap/plugins/PixiPlugin';
 import MorphSVG from './vendor/gsap/plugins/MorphSVGPlugin';
+import Physics2D from './vendor/gsap/plugins/Physics2DPlugin';
+import CustomEase from './vendor/gsap/easing/CustomEase';
+import CustomWiggle from './vendor/gsap/easing/CustomWiggle';
 
-import duotone from './components/duotone';
+// import duotone from './components/duotone';
 // import picturefill from 'picturefill';
 
 // This file contains all the dirty hacks and specificity fixes to make them
@@ -16,8 +19,9 @@ import Shame from './common/shame';
 // import { PhotoLike } from './components/photo-like';
 // import { PhotoFilters } from './components/photo-filters';
 // import { Organic } from './components/organic';
-import { Mask } from './components/mask';
+// import { Mask } from './components/mask';
 import { Mask2 } from './components/mask2';
+import { Physics } from './components/physics';
 
 // HTML document has been completely loaded and parsed
 document.addEventListener('DOMContentLoaded', () => {
@@ -33,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // PhotoFilters();
     // duotone();
     // Organic();
-    Mask();
+    // Mask();
     Mask2();
+    Physics();
 });
