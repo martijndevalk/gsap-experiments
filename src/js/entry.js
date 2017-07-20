@@ -22,6 +22,7 @@ import Shame from './common/shame';
 // import { Mask } from './components/mask';
 import { Mask2 } from './components/mask2';
 import { Physics } from './components/physics';
+import { Vendetta } from './components/vendetta';
 
 // HTML document has been completely loaded and parsed
 document.addEventListener('DOMContentLoaded', () => {
@@ -40,4 +41,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mask();
     Mask2();
     Physics();
+    Vendetta();
 });
