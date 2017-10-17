@@ -1,4 +1,4 @@
-// import PIXI from 'pixi.js';
+import PIXI from 'pixi.js';
 import TweenMax from 'gsap';
 import drawSVG from './vendor/gsap/plugins/DrawSVGPlugin';
 import PixiPlugin from './vendor/gsap/plugins/PixiPlugin';
@@ -7,19 +7,19 @@ import Physics2D from './vendor/gsap/plugins/Physics2DPlugin';
 import CustomEase from './vendor/gsap/easing/CustomEase';
 import CustomWiggle from './vendor/gsap/easing/CustomWiggle';
 
-// import duotone from './components/duotone';
-// import picturefill from 'picturefill';
+import duotone from './components/duotone';
+import picturefill from 'picturefill';
 
 // This file contains all the dirty hacks and specificity fixes to make them
 // more transparent, quantifiable and isolated;
 import Shame from './common/shame';
 
 // Components
-// import { GenderReveal } from './components/gender-reveal';
-// import { PhotoLike } from './components/photo-like';
-// import { PhotoFilters } from './components/photo-filters';
-// import { Organic } from './components/organic';
-// import { Mask } from './components/mask';
+import { GenderReveal } from './components/gender-reveal';
+import { PhotoLike } from './components/photo-like';
+import { PhotoFilters } from './components/photo-filters';
+import { Organic } from './components/organic';
+import { Mask } from './components/mask';
 import { Mask2 } from './components/mask2';
 import { Physics } from './components/physics';
 import { Vendetta } from './components/vendetta';
@@ -33,12 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
     Shame();
 
     // Init
-    // GenderReveal();
-    // PhotoLike();
-    // PhotoFilters();
-    // duotone();
-    // Organic();
-    // Mask();
+    GenderReveal();
+    PhotoLike();
+    PhotoFilters();
+    duotone();
+    Organic();
+    Mask();
     Mask2();
     Physics();
     Vendetta();
