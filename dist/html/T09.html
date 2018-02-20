@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="no-js" lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+<title>GreenSock experiments by Martijn de Valk</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<!-- Open Graph Tags -->
+<meta property="og:title" content="GreenSock experiments by Martijn de Valk" />
+<meta property="og:type" content="Website" />
+<meta property="og:url" content="http://www.martijndevalk.nl/gsap" />
+<meta property="og:image" content="http://www.martijndevalk.nl/gsap/image.jpg" />
+<meta property="og:description" content="Multiple GreenSock animation experiments" />
+<meta property="og:site_name" content="GreenSock experiments" />
+
+<!-- Twitter Summary Card -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@GreenSock-experiments" />
+<meta name="twitter:title" content="GreenSock experiments by Martijn de Valk" />
+<meta name="twitter:description" content="Multiple GreenSock animation experiments" />
+<meta name="twitter:image" content="http://www.martijndevalk.nl/gsap/image.jpg" />
+
+<!-- Favicons -->
+<link rel="shortcut icon" type="image/x-icon" href="/img/favicon/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/img/favicon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/img/favicon/manifest.json">
+<meta name="theme-color" content="#ffffff">
+
+<!-- Preload Fonts -->
+<link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="/fonts/2527EE_5_0.woff" />
+<link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="/fonts/2527EE_3_0.woff" />
+<link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="/fonts/2527EE_2_0.woff" />
+<link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="/fonts/2527EE_A_0.woff" />
+<link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="/fonts/2527EE_0_0.woff" />
+<link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="/fonts/2527EE_9_0.woff" />
+
+<!-- Styles -->
+<link href="/css/main.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div class="vendetta">
+
+        <svg viewBox="0 0 800 600">
+            <defs>
+
+                <ellipse id="marqueeCircle" stroke-dasharray="2 10"  stroke-miterlimit="10" cx="0" cy="0" rx="0" ry="0"/>
+
+                <mask id="withMask">
+                    <use xlink:href="#marqueeCircle" fill="#FFF" stroke="none" stroke-dasharray="0" stroke-width="0"/>
+                </mask>
+
+            </defs>
+            <rect width="800" height="600" fill="#e03455"/>
+            <g mask="url(#withMask)">
+                <path d="M525,192.54a36.4,36.4,0,0,0-16-26.23c-139.17-58.29-232.43,6.56-232.43,6.56-17.12,14.21-15.67,34.61-15.67,34.61l-5.83,59.75c-1.46,40.8,2.19,71.4,7.29,89.62s8,35.7,8,35.7c5.1,24,13.84,30.6,25.5,43.72S349.08,496,349.08,496c13.84,16,35.7,19.67,35.7,19.67,14.57,6.56,16-2.19,16-2.19C421.22,515,446,483.62,446,483.62s30.6-35,49.55-60.48,18.94-35,18.94-35,1.46-2.91,10.2-33.52,5.1-66.3,5.1-66.3l-5.1-93.26Z" fill="#f2f2f2"/>
+                <path d="M269.66,230.79s16-30.6,78,9.47c0,0,5.83,5.83,10.93,0,0,0,4.37-5.83,0-10.93,0,0-45.17-33.52-78.69-13.84C279.86,215.49,274,217.68,269.66,230.79Z"/>
+                <path d="M405.92,231.52s45.9-40.8,81.61-24.77c0,0,18.22,4.37,23.32,19.67,0,0-12.39-24-52.46-8,0,0-35,15.3-41.53,21.86,0,0-10.2,8.74-12.39,0C404.46,240.26,403.73,235.16,405.92,231.52Z"/>
+                <path d="M427,273.78s35.7-21.86,59,.73c0,0,4.37,8-16,11.66,0,0-22.59,2.91-37.16-2.19,0,0-10.2.73-10.2-2.19C422.67,281.79,421.22,276.69,427,273.78Z"/>
+                <path d="M291.52,278.15s19.67-21.86,59.75.73c0,0,3.64,7.29-7.29,8a89.83,89.83,0,0,0-13.12,2.19c-5.1,1.46-19.67,3.64-29.14,0C301.72,289.08,287.88,286.9,291.52,278.15Z"/>
+                <path d="M285.69,363.4h8.74s7.29,39.35,46.63,33.52c0,0,24.77-6.56,28.42-21.13,0,0,12.39,10.2,35,0,0,0,21.13,28.42,44.45,19.67,0,0,31.33-8,37.89-37.16l9.47-1.46s-13.84,35-25.5,40.8c0,0-35,18.22-59.75,16l-19.67-24s-4.37-6.56-8.74,0l-16.76,21.86s-2.91,3.64-16.76,0c0,0-18.22-1.46-30.6-5.1,0,0-19.67-11.66-21.86-18.94Z"/>
+                <polygon points="353.45 418.05 424.86 417.32 424.86 415.13 354.91 415.13 353.45 418.05" fill="#020000"/>
+                <path d="M373.13,440.63s22.59,2.91,34.24,0c0,0-2.19,2.91-2.91,24s-.73,56.1-9.47,53.92c0,0-10.2,2.91-12.39-10.93,0,0-5.1-25.5-5.1-37.16,0,0,1.46-12.39-1.46-20.4Z"/>
+            </g>
+        </svg>
+
+    </div>
+
+
+    <script src="/js/bundle.js"></script>
+
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/35984/ScrubGSAPTimeline.js"></script>
+</body>
+</html>

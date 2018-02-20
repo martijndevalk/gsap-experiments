@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html class="no-js" lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+<title>GreenSock experiments by Martijn de Valk</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<!-- Open Graph Tags -->
+<meta property="og:title" content="GreenSock experiments by Martijn de Valk" />
+<meta property="og:type" content="Website" />
+<meta property="og:url" content="http://www.martijndevalk.nl/gsap" />
+<meta property="og:image" content="http://www.martijndevalk.nl/gsap/image.jpg" />
+<meta property="og:description" content="Multiple GreenSock animation experiments" />
+<meta property="og:site_name" content="GreenSock experiments" />
+
+<!-- Twitter Summary Card -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@GreenSock-experiments" />
+<meta name="twitter:title" content="GreenSock experiments by Martijn de Valk" />
+<meta name="twitter:description" content="Multiple GreenSock animation experiments" />
+<meta name="twitter:image" content="http://www.martijndevalk.nl/gsap/image.jpg" />
+
+<!-- Favicons -->
+<link rel="shortcut icon" type="image/x-icon" href="/img/favicon/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/img/favicon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/img/favicon/manifest.json">
+<meta name="theme-color" content="#ffffff">
+
+<!-- Preload Fonts -->
+<link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="/fonts/2527EE_5_0.woff" />
+<link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="/fonts/2527EE_3_0.woff" />
+<link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="/fonts/2527EE_2_0.woff" />
+<link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="/fonts/2527EE_A_0.woff" />
+<link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="/fonts/2527EE_0_0.woff" />
+<link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="/fonts/2527EE_9_0.woff" />
+
+<!-- Styles -->
+<link href="/css/main.css" rel="stylesheet">
+
+</head>
+
+<body class="letter-mask">
+
+    <div class="mask">
+
+    <svg id="visual">
+
+        <defs>
+            <clipPath id="clipShape" class="clip-path" clipPathUnits="userSpaceOnUse">
+                <path d="M72.64,29.69c-3.69-6.16-13.85-12-25.55-12C32,17.69,24.78,24,24.78,32c0,9.39,11.08,12,24,13.54,22.47,2.77,43.4,8.62,43.4,34.32,0,24-21.24,34.32-45.24,34.32-22,0-38.93-6.77-46.94-26.47l16.93-8.77C21.7,90.79,34.17,96,47.25,96,60,96,72,91.56,72,79.86,72,69.7,61.41,65.55,47.1,64c-22-2.62-42.32-8.46-42.32-32.62C4.78,9.23,26.63.15,46.48,0,63.25,0,80.64,4.77,88.8,21.39Z" />
+                <path d="M166.36,111.86H145.28L100.49,3.68h22.78l32.47,83.87L188.36,3.68h22.78Z" />
+                <path d="M303.93,111.4H223.29V3.68h80.64v19.7H243.45V48.16h58.32V67.08H243.45V91.39h60.48Z" />
+                <path d="M393.64,3.53H414V111.4H401.36v.15L344.73,38.76v72.63H324.42V3.68h16.47l52.78,66.79Z" />
+            </clipPath>
+        </defs>
+
+        <g clip-path="url(#clipShape)">
+            <image xlink:href="/img/sven.jpg" x="0" y="0" height="100%" width="100%" preserveAspectRatio="xMidYMid slice" />
+        </g>
+
+        <g class="letter-g-wrap">
+            <g class="letter-g" fill="currentColor">
+                <path class="letter-s" d="M72.64,29.69c-3.69-6.16-13.85-12-25.55-12C32,17.69,24.78,24,24.78,32c0,9.39,11.08,12,24,13.54,22.47,2.77,43.4,8.62,43.4,34.32,0,24-21.24,34.32-45.24,34.32-22,0-38.93-6.77-46.94-26.47l16.93-8.77C21.7,90.79,34.17,96,47.25,96,60,96,72,91.56,72,79.86,72,69.7,61.41,65.55,47.1,64c-22-2.62-42.32-8.46-42.32-32.62C4.78,9.23,26.63.15,46.48,0,63.25,0,80.64,4.77,88.8,21.39Z" />
+                <path d="M166.36,111.86H145.28L100.49,3.68h22.78l32.47,83.87L188.36,3.68h22.78Z" />
+                <path d="M303.93,111.4H223.29V3.68h80.64v19.7H243.45V48.16h58.32V67.08H243.45V91.39h60.48Z" />
+                <path d="M393.64,3.53H414V111.4H401.36v.15L344.73,38.76v72.63H324.42V3.68h16.47l52.78,66.79Z" />
+            </g>
+        </g>
+    </svg>
+
+</div>
+
+
+<!--
+
+https://www.sarasoueidan.com/blog/css-svg-clipping/
+
+clipPathUnits = "userSpaceOnUse | objectBoundingBox"
+
+
+
+
+-->
+
+
+    <script src="/js/bundle.js"></script>
+
+</body>
+</html>
