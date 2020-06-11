@@ -1,0 +1,16 @@
+body {
+  overflow-x: hidden;
+  background-color: #fffadc;
+}
+
+.container {
+  height: 500vh;
+}
+
+.bubble {
+  margin: auto;
+  border-radius: 100% 86% 96% 96% / 100% 100% 100% 96%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle at 60% 30%, rgba(255,253,243,1) 0%, rgba(252,70,107,0.7) 60%);
+}
