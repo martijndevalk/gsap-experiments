@@ -10,7 +10,7 @@
   "dependencies": {
     "babel-core": "^6.26.3",
     "gsap": "^1.20.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "js-cookie": "^2.2.1",
     "picturefill": "^3.0.3",
     "pixi.js": "^4.5.3",
