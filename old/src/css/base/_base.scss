@@ -1,0 +1,61 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+// body background
+body {
+    background-color: $white;
+}
+
+/**
+ * Basic styles for links
+ */
+a {
+    text-decoration: none;
+    color: $brand-blue;
+
+    @include on-event {
+        text-decoration: underline;
+    }
+
+    &[rel~="external"] {
+        color: $brand-blue;
+
+        .icon-external-link {
+            display: inline-block;
+            width: 11px;
+
+            .svg-container {
+                @include svg-responsive (24px, 24px, 100%);
+            }
+        }
+    }
+}
+
+// iFrame
+iframe {
+    width: 100%;
+}
+
+// Reset button
+button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: none;
+    line-height: 1;
+    cursor: pointer;
+}
+
+// Reset ul when inside nav
+nav ul {
+    margin: 0;
+    list-style: none;
+
+    li {
+        margin: 0;
+    }
+}

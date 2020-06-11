@@ -1,0 +1,10 @@
+// -----------------------------------------------------------------------------
+// This file contains all the dirty hacks and specificity fixes to make them
+// more transparent, quantifiable and isolated;
+// Dedicated to housing your nasty, hacky, quick-fix code
+// -----------------------------------------------------------------------------
+
+// IE10+ specific styles go here
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+}
